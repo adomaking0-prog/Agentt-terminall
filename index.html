@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AGENT TERMINAL</title>
+    <style>
+        body { background: #000; color: #0f0; font-family: monospace; padding: 20px; }
+        .box { border: 2px solid #0f0; padding: 20px; max-width: 500px; margin: 0 auto; }
+        button { background: #000; color: #0f0; border: 1px solid #0f0; padding: 10px; margin: 5px; width: 100%; }
+        button:hover { background: #020; }
+        input { background: #000; color: #0f0; border: none; outline: none; width: 80%; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>✅ ACCESS GRANTED</h1>
+        <p>AGENT: OBSIDIAN</p>
+        <p>CLEARANCE: LEVEL 5</p>
+        <hr>
+        <h3>MISSION BRIEFING</h3>
+        <p>Stay sharp. Stay connected. All systems active.</p>
+        <hr>
+        <h3>TOOLS</h3>
+        <button onclick="window.open('https://google.com','_blank')">🔍 SEARCH</button>
+        <button onclick="alert('SECURE ✅')">🔒 SECURITY CHECK</button>
+        <button onclick="location.reload()">🔄 REFRESH</button>
+        <hr>
+        <p>TERMINAL:</p>
+        <div id="out">> Ready. Type help<br></div>
+        <span style="color:cyan">agent:~$</span>
+        <input id="cmd" placeholder="">
+    </div>
+
+    <script>
+        const c = document.getElementById('cmd');
+        const o = document.getElementById('out');
+        c.onkeydown = e => {
+            if (e.key === 'Enter') {
+                let v = c.value;
+                o.innerHTML += `> ${v}<br>`;
+                if (v === 'help') o.innerHTML += `> Commands: help, status, clear<br>`;
+                else if (v === 'status') o.innerHTML += `> All systems ONLINE ✅<br>`;
+                else if (v === 'clear') o.innerHTML = `> Ready. Type help<br>`;
+                else if (v) o.innerHTML += `> Unknown command<br>`;
+                c.value = '';
+            }
+        };
+    </script>
+</body>
+</html>
